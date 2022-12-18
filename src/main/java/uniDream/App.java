@@ -1,4 +1,4 @@
-package ch.hepia;
+package uniDream;
 
 import java.util.List;
 
