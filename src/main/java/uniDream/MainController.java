@@ -1,5 +1,8 @@
 package uniDream;
 
+
+
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,12 +39,14 @@ public class MainController {
     TagService tagService;
 
 
+    @CrossOrigin
     @GetMapping(path = "/universities")
     public @ResponseBody Iterable<UniversityVO> getUniversities() {
         // This returns a JSON or XML with the universities
         return universityService.getAllProjects();
     }
 
+    @CrossOrigin
     @GetMapping(path = "/university")
     public @ResponseBody Iterable<ProgramVO> getAllPrograms(@RequestParam String id) {
         // This returns a JSON or XML with programs of the university
@@ -56,6 +61,7 @@ public class MainController {
         return programs;
     }
 
+    @CrossOrigin
     @GetMapping(path = "/programs")
     public @ResponseBody Iterable<ProgramVO> getProgramsByTags(@RequestParam List<Integer> tags) {
         // This returns a JSON or XML with the programs by tags
@@ -70,6 +76,7 @@ public class MainController {
         return result;
     }
 
+    @CrossOrigin
     @GetMapping(path = "/tags")
     public @ResponseBody Iterable<Tag> getTags() {
         // This returns a JSON or XML with the all tags
