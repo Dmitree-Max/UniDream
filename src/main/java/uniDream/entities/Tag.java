@@ -1,7 +1,6 @@
 package uniDream.entities;
 
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,11 +8,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import org.springframework.context.annotation.Lazy;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "tags")
@@ -26,8 +25,9 @@ public class Tag {
 
     @Lazy
     @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name="tag_program")
     @JoinColumn(name = "tag_id", referencedColumnName = "id")
-    private List<Program> program;
+    private Set<Program> program;
 
     public Integer getId() {
         return id;
@@ -43,5 +43,13 @@ public class Tag {
 
     public void setBody(String name) {
         this.body = name;
+    }
+
+    public Set<Program> getPrograms() {
+        return program;
+    }
+
+    public void setProgram(Set<Program> program) {
+        this.program = program;
     }
 }

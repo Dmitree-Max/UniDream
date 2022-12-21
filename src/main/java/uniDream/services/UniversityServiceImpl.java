@@ -33,7 +33,7 @@ public class UniversityServiceImpl implements UniversityService {
     public Iterable<ProgramVO> getPrograms(Integer id) {
         Optional<University> university = findById(id);
         if (university.isEmpty()) {
-            return (Iterable<ProgramVO>) Collections.emptyIterator();
+            return null;
         }
 
         return Streams.stream(university.get().getProgram())
