@@ -1,10 +1,12 @@
 package uniDream.services;
 
+import org.assertj.core.util.Streams;
 import org.springframework.beans.InvalidPropertyException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import uniDream.DVO.ProgramVO;
+import uniDream.DVO.TagVO;
 import uniDream.TagRepository;
 import uniDream.entities.Program;
 import uniDream.entities.Tag;
@@ -23,8 +25,9 @@ public class TagServiceImpl implements TagService {
 
     @Override
     @Transactional(readOnly = true)
-    public Iterable<Tag> getAllTags() {
-        return tagRepository.findAll();
+    public Iterable<TagVO> getAllTags() {
+        return  Streams.stream(tagRepository.findAll())
+                .map(x -> x.getVO()).toList();
     }
 
     @Override

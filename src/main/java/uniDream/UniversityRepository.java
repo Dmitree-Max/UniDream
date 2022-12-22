@@ -9,12 +9,3 @@ import java.util.Optional;
 public interface UniversityRepository extends CrudRepository<University, Integer> {
 
 }
-
-//public interface UniversityRepositoryCustom
-//public interUniversityRepositoryCustom implements UniversityRepositoryCustom {
-//
-//    @Override
-//    public Iterable<Program> getPrograms(String id) {
-//        return null;
-//    }
-//}

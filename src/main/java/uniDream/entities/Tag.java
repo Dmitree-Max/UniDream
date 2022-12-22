@@ -10,6 +10,7 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import org.springframework.context.annotation.Lazy;
+import uniDream.DVO.TagVO;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -51,5 +52,9 @@ public class Tag {
 
     public void setProgram(Set<Program> program) {
         this.program = program;
+    }
+
+    public TagVO getVO() {
+        return new TagVO(this);
     }
 }

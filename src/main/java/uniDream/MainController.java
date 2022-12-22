@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.server.ResponseStatusException;
 import uniDream.DVO.ProgramVO;
+import uniDream.DVO.TagVO;
 import uniDream.DVO.UniversityVO;
 import uniDream.entities.Program;
 import uniDream.entities.Tag;
@@ -28,8 +29,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-@RestController // This means that this class is a Controller
-@RequestMapping(path = "/v0") // This means URL's start with /demo (after Application path)
+@RestController
+@RequestMapping(path = "/v0")
 public class MainController {
 
     @Autowired
@@ -78,7 +79,7 @@ public class MainController {
 
     @CrossOrigin
     @GetMapping(path = "/tags")
-    public @ResponseBody Iterable<Tag> getTags() {
+    public @ResponseBody Iterable<TagVO> getTags() {
         // This returns a JSON or XML with the all tags
         return tagService.getAllTags();
     }
